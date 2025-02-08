@@ -5,7 +5,7 @@ import pickle
 class Network:
     def __init__(self):
         self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.server = "192.168.8.186"  # 192.168.8.186 Make sure this is the correct IP of the server
+        self.server = "https://codealpha-online-game.onrender.com"  # 192.168.8.186 Make sure this is the correct IP of the server
         self.port = 5555
         self.addr = (self.server, self.port)
         self.p = self.connect()
