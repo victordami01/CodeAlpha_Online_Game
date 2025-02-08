@@ -11,7 +11,9 @@ class Network:
         self.p = self.connect()
 
     def getP(self):
-        return self.p
+        response = self.send("getP")
+        print(f"Response from server: {response}")  # Debugging line
+        return response
 
     def connect(self):
         try:
