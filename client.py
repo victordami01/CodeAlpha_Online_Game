@@ -44,20 +44,19 @@ def redrawWindow(win, game, p):
         win.blit(font.render("Your Move", 1, (0, 128, 255)), (80, 200))
         win.blit(font.render("Opponent's Move", 1, (0, 128, 255)), (350, 200))
 
-        move1 = game.get_player_move(0)
-        move2 = game.get_player_move(1)
+        if p == 0:
+            player_move = game.get_player_move(0)  # Your move
+            opponent_move = game.get_player_move(1)  # Opponent's move
+        else:
+            player_move = game.get_player_move(1)  # Your move
+            opponent_move = game.get_player_move(0)  # Opponent's move
 
         if game.bothWent():
-            text1 = font.render(move1, 1, (0, 0, 0))
-            text2 = font.render(move2, 1, (0, 0, 0))
+            text1 = font.render(player_move, 1, (0, 0, 0))
+            text2 = font.render(opponent_move, 1, (0, 0, 0))
         else:
-            if p == 0:
-                text1 = font.render(move1 if game.p1Went else "Waiting", 1, (0, 0, 0))  # Show Player 1's move
-                text2 = font.render("Locked In" if game.p2Went else "Waiting", 1, (0, 0, 0))  # Hide Player 2's move
-
-            else:
-                text1 = font.render("Locked In" if game.p1Went else "Waiting", 1, (0, 0, 0))  # Hide Player 1's move
-                text2 = font.render(move2 if game.p2Went else "Waiting", 1, (0, 0, 0))  # Show Player 2's move
+            text1 = font.render(player_move if (game.p1Went if p == 0 else game.p2Went) else "Waiting", 1, (0, 0, 0))
+            text2 = font.render("Locked In" if (game.p2Went if p == 0 else game.p1Went) else "Waiting", 1, (0, 0, 0))
 
         win.blit(text1, (100, 350))
         win.blit(text2, (400, 350))
