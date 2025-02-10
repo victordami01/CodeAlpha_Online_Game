@@ -64,18 +64,6 @@ async def handler(websocket):  # Remove 'path'
                         for client in connected_clients[game_id]:
                             await client.send(json.dumps({"type": "update", "game": game.to_dict()}))
 
-                elif data["type"] == "chat_message":
-                    chat_msg = data["message"]
-                    print(f"💬 Chat Message from Player {p} in Game {game_id}: {chat_msg}")
-
-                    # ✅ Broadcast chat message to both players
-                    for client in connected_clients[game_id]:
-                        await client.send(json.dumps({
-                            "type": "chat_message",
-                            "message": chat_msg,
-                            "player": p  # Include player number for UI styling
-                        }))
-
     except Exception as e:
         print(f"Error: {e}")
     finally:
