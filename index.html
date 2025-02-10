@@ -202,6 +202,34 @@
 #chat-send-btn:hover {
     background: #0056b3;
 }
+  /* Media Queries for Small Screens */
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            #game {
+                width: 100%;
+                padding: 15px;
+            }
+
+            #moves button {
+                width: 90px;
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            #move-status {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            #chat-container {
+                width: 90%;
+                right: 5%;
+            }
+        }
+
 
     </style>
 </head>
