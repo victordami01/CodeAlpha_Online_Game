@@ -1,4 +1,5 @@
 gunicorn==23.0.0
 packaging==24.2
 pygame==2.6.1
+websockets==10.4
 whitenoise==6.9.0
